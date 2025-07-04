@@ -1,5 +1,5 @@
 <h1 align="center">
-  <strong>DESIGN PATTERNS</strong> in <img src="./assets/images/typescript.png" width="32">
+  DESIGN PATTERNS IN <img src="./assets/images/typescript.png" width="30">
 </h1>
 
 ### Overview 🤔
