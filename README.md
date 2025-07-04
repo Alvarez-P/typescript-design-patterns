@@ -1,6 +1,6 @@
-<p align="center" style="font-size: 20px;">
-  <strong style="font-size: 45px;">DESIGN PATTERNS</strong> in <img src="./assets/images/typescript.png" width="35">
-</p>
+<h1 align="center">
+  <strong>DESIGN PATTERNS</strong> in <img src="./assets/images/typescript.png" width="32">
+</h1>
 
 ### Overview 🤔
 
