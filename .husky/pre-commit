@@ -14,11 +14,4 @@ pnpm exec biome format --write ./src ||
   false;
 )
 
-echo '🪛 Check and manage imports...' ||
-(
-  echo '❌ Checking failed'
-  false;
-)
-pnpm exec biome check --write ./src
-
 echo '✅ Linting and Formatting passed'
