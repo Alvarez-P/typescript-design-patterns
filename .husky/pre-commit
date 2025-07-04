@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+echo '🔎 Linting...'
+pnpm exec biome lint --write ./src ||
+(
+  echo '❌ Linting failed'
+  false;
+)
+
+echo '🎨 Formatting...'
+pnpm exec biome format --write ./src ||
+(
+  echo '❌ Formatting failed'
+  false;
+)
+
+pnpm exec biome check --write ./src
+
+echo '✅ Linting and Formatting passed'
