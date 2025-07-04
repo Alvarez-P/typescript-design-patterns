@@ -1,5 +1,5 @@
 <p align="center" style="font-size: 20px;">
-  <strong style="font-size: 35px;">DESIGN PATTERNS</strong>&nbsp&nbsp in &nbsp&nbsp<img src="./assets/images/typescript.png" width="29">
+  <strong style="font-size: 45px;">DESIGN PATTERNS</strong> in <img src="./assets/images/typescript.png" width="35">
 </p>
 
 ### Overview 🤔
