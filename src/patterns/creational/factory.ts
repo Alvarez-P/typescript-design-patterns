@@ -1,41 +1,42 @@
 export interface Logger {
+	target: string
 	log(message: string): void
 	error(message: string): void
 }
 
 export class ConsoleLogger implements Logger {
-	constructor(private target: string) {}
+	constructor(public target: string) {}
 
 	log(message: string): void {
-		console.log(`LOG: [${this.target}] ${message}`)
+		console.log(`LOG [${this.target}]: ${message}`)
 	}
 
 	error(message: string): void {
-		console.log(`ERROR: [${this.target}] ${message}`)
+		console.log(`ERROR [${this.target}]: ${message}`)
 	}
 }
 
 export class FileLogger implements Logger {
-	constructor(private target: string) {}
+	constructor(public target: string) {}
 
 	log(message: string): void {
-		console.log(`LOG: [${this.target}] ${message}`)
+		console.log(`LOG [${this.target}]: ${message}`)
 	}
 
 	error(message: string): void {
-		console.log(`ERROR: [${this.target}] ${message}`)
+		console.log(`ERROR [${this.target}]: ${message}`)
 	}
 }
 
 export class DatadogLogger implements Logger {
-	constructor(private target: string) {}
+	constructor(public target: string) {}
 
 	log(message: string): void {
-		console.log(`LOG: [${this.target}] ${message}`)
+		console.log(`LOG [${this.target}]: ${message}`)
 	}
 
 	error(message: string): void {
-		console.log(`ERROR: [${this.target}] ${message}`)
+		console.log(`ERROR [${this.target}]: ${message}`)
 	}
 }
 

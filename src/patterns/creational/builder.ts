@@ -1,4 +1,4 @@
-class Course {
+export class Course {
 	constructor(
 		public title: string,
 		public description: string,
@@ -139,9 +139,5 @@ export class CourseBuilder {
 	reset(): this {
 		this.course = this.init()
 		return this
-	}
-
-	clone(): CourseBuilder {
-		return new CourseBuilder(this.course)
 	}
 }
