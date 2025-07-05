@@ -8,7 +8,37 @@ This project is a design patterns compilation with examples in Typescript.
 
 ## Getting Started 🚀
 
-⚒️ Building ...
+To execute patterns must be:
+
+* Install dependencies:
+```sh
+pnpm i
+```
+
+* Run command:
+```sh
+pnpm run dev
+```
+
+> [!TIP]
+> You can edit file `./src/index.ts` to change patterns to execute using `DesignPatternsRunner` class
+>
+> 1. Get class instance
+> ```ts
+>   const runner = new DesignPatternsRunner(
+> 		new Queue<ReturnType<PatternRunner>>(new ConsoleLogger('Queue')),
+> 		new ConsoleLogger('Runner')
+>   )
+> ```
+> 2. Run patterns
+> ```ts
+>   // Run all patterns
+>   await runner.runAll()
+>
+>   // Run specific pattern
+>   await runner.run(runner.getPatterns().SINGLETON)
+> ```
+>
 
 ## Definitions 📚
 
