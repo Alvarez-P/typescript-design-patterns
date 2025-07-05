@@ -1,5 +1,6 @@
 import { ConsoleLogger, type Logger } from '../patterns/creational/factory'
 import { prototypeRunner } from '../patterns/creational/prototype'
+import { singletonRunner } from '../patterns/creational/singleton'
 import type { PatternRunner } from '../types'
 import type { Queue } from './queue'
 
@@ -7,9 +8,14 @@ export class DesignPatternsRunner<
 	P extends ReturnType<PatternRunner> = ReturnType<PatternRunner>
 > {
 	private readonly patterKeys: Record<string, symbol> = {
-		PROTOTYPE: Symbol('PROTOTYPE')
+    SINGLETON: Symbol('SINGLETON'),
+		PROTOTYPE: Symbol('PROTOTYPE'),
 	}
 	private readonly patterns = new Map([
+    [
+      this.patterKeys.SINGLETON,
+      singletonRunner(new ConsoleLogger('SingletonPattern'))
+    ],
 		[
 			this.patterKeys.PROTOTYPE,
 			prototypeRunner(new ConsoleLogger('PrototypePattern'))

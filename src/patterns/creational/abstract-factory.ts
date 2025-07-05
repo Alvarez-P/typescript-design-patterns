@@ -4,20 +4,7 @@ import {
 	FileLogger,
 	type Logger
 } from './factory'
-
-interface ApiSettings {
-	database: {
-		host: string
-		port: number
-		user: string
-		pwd: string
-	}
-	aws: {
-		accessKeyId: string
-		secretAccessKey: string
-	}
-	port: number
-}
+import type { ApiSettings } from './singleton'
 
 export abstract class EnvironmentApiSettingsFactory {
 	abstract createLogger(target: string): Logger
