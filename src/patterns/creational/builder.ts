@@ -1,5 +1,9 @@
+import type { PatternRunner } from '../../types'
+import type { Logger } from './factory'
+
 export class Course {
   constructor(
+    public id: string,
     public title: string,
     public description: string,
     public duration: number,
@@ -22,6 +26,7 @@ export class CourseBuilder {
   constructor(course?: Course) {
     this.course = course
       ? new Course(
+          course.id,
           course.title,
           course.description,
           course.duration,
@@ -41,6 +46,7 @@ export class CourseBuilder {
 
   private init() {
     return new Course(
+      crypto.randomUUID(),
       '',
       '',
       0,
@@ -55,6 +61,11 @@ export class CourseBuilder {
       new Date(),
       null
     )
+  }
+
+  id(id: string): this {
+    this.course.id = id
+    return this
   }
 
   setTitle(title: string): this {
@@ -82,18 +93,18 @@ export class CourseBuilder {
     return this
   }
 
-  addCategory(category: string): this {
-    this.course.categories.push(category)
+  addCategory(...category: string[]): this {
+    this.course.categories.push(...category)
     return this
   }
 
-  addRequirement(requirement: string): this {
-    this.course.requirements.push(requirement)
+  addRequirement(...requirement: string[]): this {
+    this.course.requirements.push(...requirement)
     return this
   }
 
-  addTopic(topic: string): this {
-    this.course.topics.push(topic)
+  addTopic(...topic: string[]): this {
+    this.course.topics.push(...topic)
     return this
   }
 
@@ -125,7 +136,22 @@ export class CourseBuilder {
   build(): Course {
     const result = { ...this.course }
     this.reset()
-    return result
+    return new Course(
+      result.id,
+      result.title,
+      result.description,
+      result.duration,
+      result.price,
+      result.instructor,
+      [...result.categories],
+      [...result.requirements],
+      [...result.enrolled],
+      [...result.topics],
+      result.startAt,
+      result.createdAt,
+      result.updatedAt,
+      result.deletedAt
+    )
   }
 
   excludeAndBuild<ToExclude extends (keyof Course)[]>(
@@ -140,4 +166,38 @@ export class CourseBuilder {
     this.course = this.init()
     return this
   }
+}
+
+export const builderRunner: PatternRunner = (logger: Logger) => () => {
+  const courseBuilder = new CourseBuilder()
+    .setTitle('Design Patterns in TypeScript')
+    .setDescription('Learn how to implement design patterns in TypeScript')
+    .setDuration(30)
+    .setPrice(99.99)
+    .setInstructor('John Doe')
+    .addCategory('Programming', 'TypeScript')
+    .addRequirement('Basic TypeScript knowledge')
+    .addTopic('Singleton', 'Factory', 'Builder', 'Prototype')
+    .setStartAt(new Date('2025-09-01'))
+    .setCreatedAt(new Date())
+    .setUpdatedAt(new Date())
+    .setDeletedAt(null)
+
+  const course = courseBuilder.build()
+  const courseDataToFlyer = courseBuilder.excludeAndBuild([
+    'description',
+    'enrolled',
+    'requirements',
+    'categories',
+    'topics',
+    'createdAt',
+    'updatedAt',
+    'deletedAt'
+  ])
+
+  logger.log(`Course ${course.title} imparted by ${course.instructor}`)
+  logger.log(
+    `Builded data is instance of Course? ${course instanceof Course ? '✅' : '❌'}`
+  )
+  logger.log(`Course data for flyer: ${Object.keys(courseDataToFlyer)}`)
 }

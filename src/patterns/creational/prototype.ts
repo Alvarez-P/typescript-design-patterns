@@ -12,6 +12,7 @@ export class CoursePrototype {
 
 export const prototypeRunner: PatternRunner = (logger: Logger) => () => {
   const baseCourse = new Course(
+    crypto.randomUUID(),
     'Design Patterns in TypeScript',
     'Learn how to implement design patterns in TypeScript',
     30,
