@@ -28,10 +28,10 @@ export class Queue<
 			const func = this.dequeue()
 			if (!func) continue
 			try {
-        this.logger.log(`Executing task...`)
+				this.logger.log(`Executing task...`)
 				const result = func()
 				if (result instanceof Promise) await result
-        this.logger.log(`Task executed.`)
+				this.logger.log(`Task executed.`)
 			} catch (error) {
 				this.logger.error(`Error executing task: ${error}`)
 				process.exit(1)
