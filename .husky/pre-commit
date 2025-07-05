@@ -14,4 +14,8 @@ pnpm exec biome format --write ./src ||
   false;
 )
 
+git add $(git diff --cached --name-only --diff-filter=ACM)
+
 echo '✅ Linting and Formatting passed'
+
+exit 0
