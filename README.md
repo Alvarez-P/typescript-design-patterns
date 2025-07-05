@@ -26,8 +26,8 @@ pnpm run dev
 > 1. Get class instance
 > ```ts
 >   const runner = new DesignPatternsRunner(
-> 		new Queue<ReturnType<PatternRunner>>(new ConsoleLogger('Queue')),
-> 		new ConsoleLogger('Runner')
+>     new Queue<ReturnType<PatternRunner>>(new ConsoleLogger('Queue')),
+>     new ConsoleLogger('Runner')
 >   )
 > ```
 > 2. Run patterns
