@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/complexity/noStaticOnlyClass: . */
 import type { PatternRunner } from '../../types'
 import {
   ConsoleLogger,
@@ -7,12 +8,12 @@ import {
 } from './factory'
 import type { ApiSettings } from './singleton'
 
-export abstract class EnvironmentApiSettingsFactory {
+export abstract class EnvironmentApiSettings {
   abstract createLogger(target: string): Logger
   abstract createSettings(): ApiSettings
 }
 
-export class DevelopmentApiSettingsFactory extends EnvironmentApiSettingsFactory {
+export class DevelopmentApiSettings extends EnvironmentApiSettings {
   createLogger(target: string): Logger {
     return new ConsoleLogger(target)
   }
@@ -34,7 +35,7 @@ export class DevelopmentApiSettingsFactory extends EnvironmentApiSettingsFactory
   }
 }
 
-export class ProductionApiSettingsFactory extends EnvironmentApiSettingsFactory {
+export class ProductionApiSettings extends EnvironmentApiSettings {
   createLogger(target: string): Logger {
     return new DatadogLogger(target)
   }
@@ -56,7 +57,7 @@ export class ProductionApiSettingsFactory extends EnvironmentApiSettingsFactory 
   }
 }
 
-export class TestingApiSettingsFactory extends EnvironmentApiSettingsFactory {
+export class TestingApiSettings extends EnvironmentApiSettings {
   createLogger(target: string): Logger {
     return new ConsoleLogger(target)
   }
@@ -78,7 +79,7 @@ export class TestingApiSettingsFactory extends EnvironmentApiSettingsFactory {
   }
 }
 
-export class QAApiSettingsFactory extends EnvironmentApiSettingsFactory {
+export class QAApiSettings extends EnvironmentApiSettings {
   createLogger(target: string): Logger {
     return new FileLogger(target)
   }
@@ -100,12 +101,31 @@ export class QAApiSettingsFactory extends EnvironmentApiSettingsFactory {
   }
 }
 
+export class EnvironmentApiSettingsFactory {
+  static getFactory(environment: string): EnvironmentApiSettings {
+    switch (environment) {
+      case 'development':
+        return new DevelopmentApiSettings()
+      case 'production':
+        return new ProductionApiSettings()
+      case 'testing':
+        return new TestingApiSettings()
+      case 'qa':
+        return new QAApiSettings()
+      default:
+        throw new Error(`Unknown environment: ${environment}`)
+    }
+  }
+}
+
 export const abstractFactoryRunner: PatternRunner = (logger: Logger) => () => {
-  const createApi = (settings: EnvironmentApiSettingsFactory) => {
+  const createApi = (settings: EnvironmentApiSettings) => {
     const apiSettings = settings.createSettings()
     logger.log(`Server running on port: ${apiSettings.port}`)
   }
 
-  const devSettingsFactory = new DevelopmentApiSettingsFactory()
+  const devSettingsFactory = EnvironmentApiSettingsFactory.getFactory(
+    process.env.NODE_ENV || 'development'
+  )
   createApi(devSettingsFactory)
 }
