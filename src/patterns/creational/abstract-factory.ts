@@ -1,3 +1,4 @@
+import type { PatternRunner } from '../../types'
 import {
   ConsoleLogger,
   DatadogLogger,
@@ -97,4 +98,14 @@ export class QAApiSettingsFactory extends EnvironmentApiSettingsFactory {
       port: 3000
     }
   }
+}
+
+export const abstractFactoryRunner: PatternRunner = (logger: Logger) => () => {
+  const createApi = (settings: EnvironmentApiSettingsFactory) => {
+    const apiSettings = settings.createSettings()
+    logger.log(`Server running on port: ${apiSettings.port}`)
+  }
+
+  const devSettingsFactory = new DevelopmentApiSettingsFactory()
+  createApi(devSettingsFactory)
 }

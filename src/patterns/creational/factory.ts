@@ -1,3 +1,5 @@
+import type { PatternRunner } from '../../types'
+
 export interface Logger {
   target: string
   log(message: string): void
@@ -32,11 +34,15 @@ export class DatadogLogger implements Logger {
   constructor(public target: string) {}
 
   log(message: string): void {
-    console.log(`LOG [${this.target}]: ${message}`)
+    console.log(
+      `DATADOG LOG [${this.target}]: ${message} - ${new Date().toISOString()}\n\tFrom ${__filename}`
+    )
   }
 
   error(message: string): void {
-    console.log(`ERROR [${this.target}]: ${message}`)
+    console.log(
+      `DATADOG ERROR [${this.target}]: ${message} - ${new Date().toISOString()}\n\tFrom ${__filename}`
+    )
   }
 }
 
@@ -52,4 +58,9 @@ export class LoggerFactory {
     if (!LoggerClass) throw new Error(`Logger type "${type}" is not supported.`)
     return new LoggerClass(target)
   }
+}
+
+export const factoryRunner: PatternRunner = () => () => {
+  const logger = new LoggerFactory().createLogger('external', 'FactoryPattern')
+  logger.log('Server running on port: 3000')
 }

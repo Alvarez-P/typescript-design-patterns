@@ -1,5 +1,10 @@
+import { abstractFactoryRunner } from '../patterns/creational/abstract-factory'
 import { builderRunner } from '../patterns/creational/builder'
-import { ConsoleLogger, type Logger } from '../patterns/creational/factory'
+import {
+  ConsoleLogger,
+  factoryRunner,
+  type Logger
+} from '../patterns/creational/factory'
 import { prototypeRunner } from '../patterns/creational/prototype'
 import { singletonRunner } from '../patterns/creational/singleton'
 import type { PatternRunner } from '../types'
@@ -11,7 +16,9 @@ export class DesignPatternsRunner<
   private readonly patterKeys: Record<string, symbol> = {
     SINGLETON: Symbol('SINGLETON'),
     BUILDER: Symbol('BUILDER'),
-    PROTOTYPE: Symbol('PROTOTYPE')
+    PROTOTYPE: Symbol('PROTOTYPE'),
+    FACTORY: Symbol('FACTORY'),
+    ABSTRACT_FACTORY: Symbol('ABSTRACT_FACTORY')
   }
   private readonly patterns = new Map([
     [
@@ -25,6 +32,14 @@ export class DesignPatternsRunner<
     [
       this.patterKeys.PROTOTYPE,
       prototypeRunner(new ConsoleLogger('PrototypePattern'))
+    ],
+    [
+      this.patterKeys.FACTORY,
+      factoryRunner(new ConsoleLogger('FactoryPattern'))
+    ],
+    [
+      this.patterKeys.ABSTRACT_FACTORY,
+      abstractFactoryRunner(new ConsoleLogger('AbstractFactoryPattern'))
     ]
   ])
 
