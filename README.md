@@ -59,8 +59,42 @@ Classification
 
 ### Creational Patterns
 
-**Factory**
+* Singleton
 
-**Abstract Factory**
+Creational design pattern that restricts a class from instantiating multiple objects. It creates a single instance of a class and provides a global point of access to that instance.
 
-**Builder**
+<p align="center">
+  <img src="./assets/images/umls/singleton.png" width="200">
+</p>
+
+* Factory
+
+Creational design pattern that provides a way to create objects without specifying the exact class of object that will be created. It defines an interface for creating objects, and lets subclasses decide which class to instantiate.
+
+<p align="center">
+  <img src="./assets/images/umls/factory.png" width="350">
+</p>
+
+* Abstract Factory
+
+Creational design pattern that provides a way to create families of related objects without specifying their concrete classes. It defines an interface for creating objects, and lets subclasses decide which classes to instantiate and how to create them.
+
+<p align="center">
+  <img src="./assets/images/umls/abstract-factory.png" width="450">
+</p>
+
+* Builder
+
+Creational design pattern that separates the construction of complex objects from their representation. It allows you to construct objects step-by-step, and provides a way to create different representations of the same object.
+
+<p align="center">
+  <img src="./assets/images/umls/builder.png" width="450">
+</p>
+
+* Prototype
+
+Creational design pattern that allows you to create new objects by copying existing objects, without making your code dependent on their classes. It provides a way to create objects that are initialized with values from another object.
+
+<p align="center">
+  <img src="./assets/images/umls/prototype.png" width="400">
+</p>
