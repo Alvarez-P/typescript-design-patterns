@@ -57,7 +57,7 @@ Classification
 * Structural
 * Behavioral
 
-### Creational Patterns
+### Creational Patterns 🏭
 
 * Singleton
 
@@ -97,4 +97,14 @@ Creational design pattern that allows you to create new objects by copying exist
 
 <p align="center">
   <img src="./assets/images/umls/prototype.png" width="400">
+</p>
+
+### Structural Patterns 🧩
+
+* Adapter
+
+Structural design pattern that allows two incompatible objects to work together by converting the interface of one object into an interface expected by the other object.
+
+<p align="center">
+  <img src="./assets/images/umls/adapter.png" width="400">
 </p>
