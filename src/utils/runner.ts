@@ -7,6 +7,7 @@ import {
 } from '../patterns/creational/factory'
 import { prototypeRunner } from '../patterns/creational/prototype'
 import { singletonRunner } from '../patterns/creational/singleton'
+import { adapterRunner } from '../patterns/structural/adapter'
 import type { PatternRunner } from '../types'
 import type { Queue } from './queue'
 
@@ -18,7 +19,8 @@ export class DesignPatternsRunner<
     BUILDER: Symbol('BUILDER'),
     PROTOTYPE: Symbol('PROTOTYPE'),
     FACTORY: Symbol('FACTORY'),
-    ABSTRACT_FACTORY: Symbol('ABSTRACT_FACTORY')
+    ABSTRACT_FACTORY: Symbol('ABSTRACT_FACTORY'),
+    ADAPTER: Symbol('ADAPTER')
   }
   private readonly patterns = new Map([
     [
@@ -40,6 +42,10 @@ export class DesignPatternsRunner<
     [
       this.patterKeys.ABSTRACT_FACTORY,
       abstractFactoryRunner(new ConsoleLogger('AbstractFactoryPattern'))
+    ],
+    [
+      this.patterKeys.ADAPTER,
+      adapterRunner(new ConsoleLogger('AdapterPattern'))
     ]
   ])
 
