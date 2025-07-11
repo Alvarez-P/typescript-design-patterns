@@ -108,3 +108,11 @@ Structural design pattern that allows two incompatible objects to work together 
 <p align="center">
   <img src="./assets/images/umls/adapter.png" width="400">
 </p>
+
+* Bridge
+
+Structural design pattern that separates an object's abstraction from its implementation, allowing for greater flexibility and extensibility.
+
+<p align="center">
+  <img src="./assets/images/umls/bridge.png" width="400">
+</p>
