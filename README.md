@@ -23,18 +23,6 @@ pnpm run dev
 > [!TIP]
 > You can edit file `./src/index.ts` to change patterns to execute using `DesignPatternsManager` class
 >
-> 1. Get class instance
-> ```ts
->   const managerLogger = new ConsoleLogger('DesignPatternsManager')
->   const queueLogger = new ConsoleLogger('Queue')
->
->   const manager = new DesignPatternsManager(
->     managerLogger,
->     new Queue<ReturnType<PatternUseCase>>(new Runner(queueLogger)),
->     new Runner(managerLogger)
->   )
-> ```
-> 2. Run patterns
 > ```ts
 >   // Run all patterns
 >   await manager.runAll()
