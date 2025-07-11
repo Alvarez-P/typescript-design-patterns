@@ -61,7 +61,7 @@ Classification
 
 * Singleton
 
-Creational design pattern that restricts a class from instantiating multiple objects. It creates a single instance of a class and provides a global point of access to that instance.
+Restricts a class from instantiating multiple objects. It creates a single instance of a class and provides a global point of access to that instance.
 
 <p align="center">
   <img src="./assets/images/umls/singleton.png" width="200">
@@ -69,7 +69,7 @@ Creational design pattern that restricts a class from instantiating multiple obj
 
 * Factory
 
-Creational design pattern that provides a way to create objects without specifying the exact class of object that will be created. It defines an interface for creating objects, and lets subclasses decide which class to instantiate.
+Provides a way to create objects without specifying the exact class of object that will be created. It defines an interface for creating objects, and lets subclasses decide which class to instantiate.
 
 <p align="center">
   <img src="./assets/images/umls/factory.png" width="350">
@@ -77,7 +77,7 @@ Creational design pattern that provides a way to create objects without specifyi
 
 * Abstract Factory
 
-Creational design pattern that provides a way to create families of related objects without specifying their concrete classes. It defines an interface for creating objects, and lets subclasses decide which classes to instantiate and how to create them.
+Provides a way to create families of related objects without specifying their concrete classes. It defines an interface for creating objects, and lets subclasses decide which classes to instantiate and how to create them.
 
 <p align="center">
   <img src="./assets/images/umls/abstract-factory.png" width="450">
@@ -85,7 +85,7 @@ Creational design pattern that provides a way to create families of related obje
 
 * Builder
 
-Creational design pattern that separates the construction of complex objects from their representation. It allows you to construct objects step-by-step, and provides a way to create different representations of the same object.
+Separates the construction of complex objects from their representation. It allows you to construct objects step-by-step, and provides a way to create different representations of the same object.
 
 <p align="center">
   <img src="./assets/images/umls/builder.png" width="450">
@@ -93,7 +93,7 @@ Creational design pattern that separates the construction of complex objects fro
 
 * Prototype
 
-Creational design pattern that allows you to create new objects by copying existing objects, without making your code dependent on their classes. It provides a way to create objects that are initialized with values from another object.
+Allows you to create new objects by copying existing objects, without making your code dependent on their classes. It provides a way to create objects that are initialized with values from another object.
 
 <p align="center">
   <img src="./assets/images/umls/prototype.png" width="400">
@@ -103,7 +103,7 @@ Creational design pattern that allows you to create new objects by copying exist
 
 * Adapter
 
-Structural design pattern that allows two incompatible objects to work together by converting the interface of one object into an interface expected by the other object.
+Allows two incompatible objects to work together by converting the interface of one object into an interface expected by the other object.
 
 <p align="center">
   <img src="./assets/images/umls/adapter.png" width="400">
@@ -111,7 +111,7 @@ Structural design pattern that allows two incompatible objects to work together 
 
 * Bridge
 
-Structural design pattern that separates an object's abstraction from its implementation, allowing for greater flexibility and extensibility.
+Separates an object's abstraction from its implementation, allowing them to vary independently, favoring greater flexibility and extensibility.
 
 <p align="center">
   <img src="./assets/images/umls/bridge.png" width="400">
