@@ -21,7 +21,7 @@ pnpm run dev
 ```
 
 > [!TIP]
-> You can edit file `./src/index.ts` to change patterns to execute using `DesignPatternsRunner` class
+> You can edit file `./src/index.ts` to change patterns to execute using `DesignPatternsManager` class
 >
 > 1. Get class instance
 > ```ts
