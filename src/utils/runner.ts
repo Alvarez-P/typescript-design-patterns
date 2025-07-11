@@ -8,6 +8,7 @@ import {
 import { prototypeRunner } from '../patterns/creational/prototype'
 import { singletonRunner } from '../patterns/creational/singleton'
 import { adapterRunner } from '../patterns/structural/adapter'
+import { bridgeRunner } from '../patterns/structural/bridge'
 import type { PatternRunner } from '../types'
 import type { Queue } from './queue'
 
@@ -20,7 +21,8 @@ export class DesignPatternsRunner<
     PROTOTYPE: Symbol('PROTOTYPE'),
     FACTORY: Symbol('FACTORY'),
     ABSTRACT_FACTORY: Symbol('ABSTRACT_FACTORY'),
-    ADAPTER: Symbol('ADAPTER')
+    ADAPTER: Symbol('ADAPTER'),
+    BRIDGE: Symbol('BRIDGE')
   }
   private readonly patterns = new Map([
     [
@@ -46,7 +48,8 @@ export class DesignPatternsRunner<
     [
       this.patterKeys.ADAPTER,
       adapterRunner(new ConsoleLogger('AdapterPattern'))
-    ]
+    ],
+    [this.patterKeys.BRIDGE, bridgeRunner(new ConsoleLogger('BridgePattern'))]
   ])
 
   constructor(
