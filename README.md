@@ -25,18 +25,22 @@ pnpm run dev
 >
 > 1. Get class instance
 > ```ts
->   const runner = new DesignPatternsRunner(
->     new Queue<ReturnType<PatternRunner>>(new ConsoleLogger('Queue')),
->     new ConsoleLogger('Runner')
+>   const managerLogger = new ConsoleLogger('DesignPatternsManager')
+>   const queueLogger = new ConsoleLogger('Queue')
+>
+>   const manager = new DesignPatternsManager(
+>     managerLogger,
+>     new Queue<ReturnType<PatternUseCase>>(new Runner(queueLogger)),
+>     new Runner(managerLogger)
 >   )
 > ```
 > 2. Run patterns
 > ```ts
 >   // Run all patterns
->   await runner.runAll()
+>   await manager.runAll()
 >
 >   // Run specific pattern
->   await runner.run(runner.getPatterns().SINGLETON)
+>   await manager.run(manager.getPatterns().SINGLETON)
 > ```
 >
 
