@@ -1,4 +1,4 @@
-import type { PatternRunner } from '../../types'
+import type { PatternUseCase } from '../../types'
 import { Course, CourseBuilder } from './builder'
 import type { Logger } from './factory'
 
@@ -10,7 +10,7 @@ export class CoursePrototype {
   }
 }
 
-export const prototypeRunner: PatternRunner = (logger: Logger) => () => {
+export const prototypeUseCase: PatternUseCase = (logger: Logger) => () => {
   const baseCourse = new Course(
     crypto.randomUUID(),
     'Design Patterns in TypeScript',

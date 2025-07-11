@@ -1,4 +1,4 @@
-import type { PatternRunner } from '../../types'
+import type { PatternUseCase } from '../../types'
 import type { Logger } from '../creational/factory'
 
 class Occurrence {
@@ -143,7 +143,7 @@ const mockEvents: Occurrence[] = [
   )
 ]
 
-export const bridgeRunner: PatternRunner = (logger: Logger) => () => {
+export const bridgeUseCase: PatternUseCase = (logger: Logger) => () => {
   logger.log('Upcoming events:')
   for (const e of mockEvents) {
     if (e.isBefore()) {

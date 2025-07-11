@@ -1,4 +1,4 @@
-import type { PatternRunner } from '../../types'
+import type { PatternUseCase } from '../../types'
 import type { Logger } from './factory'
 
 export interface ApiSettings {
@@ -42,7 +42,7 @@ class DevelopmentApiSettings implements ApiSettings {
   }
 }
 
-export const singletonRunner: PatternRunner = (logger: Logger) => () => {
+export const singletonUseCase: PatternUseCase = (logger: Logger) => () => {
   const settings = DevelopmentApiSettings.getInstance(logger)
   const secondSettings = DevelopmentApiSettings.getInstance(logger)
 

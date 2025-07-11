@@ -1,11 +1,11 @@
-import type { Logger } from '../patterns/creational/factory'
+import type { Runner } from './runner'
 
 export class Queue<
   T extends (...args: unknown[]) => unknown | Promise<unknown>
 > {
   private tasks: T[] = []
 
-  constructor(private logger: Logger) {}
+  constructor(private runner: Runner) {}
 
   public enqueue(task: T): void {
     this.tasks.push(task)
@@ -27,15 +27,7 @@ export class Queue<
     while (this.tasks.length) {
       const func = this.dequeue()
       if (!func) continue
-      try {
-        this.logger.log(`Executing task...`)
-        const result = func()
-        if (result instanceof Promise) await result
-        this.logger.log(`Task executed.`)
-      } catch (error) {
-        this.logger.error(`Error executing task: ${error}`)
-        process.exit(1)
-      }
+      await this.runner.run(func)
     }
   }
 }

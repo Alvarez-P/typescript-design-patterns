@@ -1,3 +1,3 @@
 import type { Logger } from './patterns/creational/factory'
 
-export type PatternRunner = (logger: Logger) => () => void | Promise<void>
+export type PatternUseCase = (logger: Logger) => () => void | Promise<void>

@@ -1,4 +1,4 @@
-import type { PatternRunner } from '../../types'
+import type { PatternUseCase } from '../../types'
 
 export interface Logger {
   target: string
@@ -60,7 +60,7 @@ export class LoggerFactory {
   }
 }
 
-export const factoryRunner: PatternRunner = () => () => {
+export const factoryUseCase: PatternUseCase = () => () => {
   const logger = new LoggerFactory().createLogger('external', 'FactoryPattern')
   logger.log('Server running on port: 3000')
 }

@@ -1,4 +1,4 @@
-import type { PatternRunner } from '../../types'
+import type { PatternUseCase } from '../../types'
 import type { Logger } from '../creational/factory'
 
 interface DateFormatter {
@@ -55,7 +55,7 @@ class IntlDateFormatterAdapter implements DateFormatter {
   }
 }
 
-export const adapterRunner: PatternRunner = (logger: Logger) => () => {
+export const adapterUseCase: PatternUseCase = (logger: Logger) => () => {
   const formatter = (f: DateFormatter, date: Date) => {
     logger.log(`\tYYYYMMDD: ${f.yyyymmdd(date)}`)
     logger.log(`\tDDMMYYYY: ${f.ddmmyyyy(date)}`)

@@ -1,11 +1,16 @@
 import { ConsoleLogger } from './patterns/creational/factory'
-import type { PatternRunner } from './types'
+import type { PatternUseCase } from './types'
+import { DesignPatternsManager } from './utils/manager'
 import { Queue } from './utils/queue'
-import { DesignPatternsRunner } from './utils/runner'
+import { Runner } from './utils/runner'
 ;(async () => {
-  const runner = new DesignPatternsRunner(
-    new Queue<ReturnType<PatternRunner>>(new ConsoleLogger('Queue')),
-    new ConsoleLogger('Runner')
+  const managerLogger = new ConsoleLogger('DesignPatternsManager')
+  const queueLogger = new ConsoleLogger('Queue')
+
+  const manager = new DesignPatternsManager(
+    managerLogger,
+    new Queue<ReturnType<PatternUseCase>>(new Runner(queueLogger)),
+    new Runner(managerLogger)
   )
-  await runner.runAll()
+  await manager.runAll()
 })()

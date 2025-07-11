@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/complexity/noStaticOnlyClass: . */
-import type { PatternRunner } from '../../types'
+import type { PatternUseCase } from '../../types'
 import {
   ConsoleLogger,
   DatadogLogger,
@@ -118,14 +118,15 @@ export class EnvironmentApiSettingsFactory {
   }
 }
 
-export const abstractFactoryRunner: PatternRunner = (logger: Logger) => () => {
-  const createApi = (settings: EnvironmentApiSettings) => {
-    const apiSettings = settings.createSettings()
-    logger.log(`Server running on port: ${apiSettings.port}`)
-  }
+export const abstractFactoryUseCase: PatternUseCase =
+  (logger: Logger) => () => {
+    const createApi = (settings: EnvironmentApiSettings) => {
+      const apiSettings = settings.createSettings()
+      logger.log(`Server running on port: ${apiSettings.port}`)
+    }
 
-  const devSettingsFactory = EnvironmentApiSettingsFactory.getFactory(
-    process.env.NODE_ENV || 'development'
-  )
-  createApi(devSettingsFactory)
-}
+    const devSettingsFactory = EnvironmentApiSettingsFactory.getFactory(
+      process.env.NODE_ENV || 'development'
+    )
+    createApi(devSettingsFactory)
+  }
