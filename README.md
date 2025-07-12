@@ -56,7 +56,7 @@ Classification
 Restricts a class from instantiating multiple objects. It creates a single instance of a class and provides a global point of access to that instance.
 
 <p align="center">
-  <img src="./assets/images/umls/singleton.png" width="200">
+  <img src="./assets/images/umls/singleton.jpg" width="400">
 </p>
 
 * Factory
@@ -64,7 +64,7 @@ Restricts a class from instantiating multiple objects. It creates a single insta
 Provides a way to create objects without specifying the exact class of object that will be created. It defines an interface for creating objects, and lets subclasses decide which class to instantiate.
 
 <p align="center">
-  <img src="./assets/images/umls/factory.png" width="350">
+  <img src="./assets/images/umls/factory.jpg" width="400">
 </p>
 
 * Abstract Factory
@@ -72,7 +72,7 @@ Provides a way to create objects without specifying the exact class of object th
 Provides a way to create families of related objects without specifying their concrete classes. It defines an interface for creating objects, and lets subclasses decide which classes to instantiate and how to create them.
 
 <p align="center">
-  <img src="./assets/images/umls/abstract-factory.png" width="450">
+  <img src="./assets/images/umls/abstract-factory.jpg" width="400">
 </p>
 
 * Builder
@@ -80,7 +80,7 @@ Provides a way to create families of related objects without specifying their co
 Separates the construction of complex objects from their representation. It allows you to construct objects step-by-step, and provides a way to create different representations of the same object.
 
 <p align="center">
-  <img src="./assets/images/umls/builder.png" width="450">
+  <img src="./assets/images/umls/builder.jpg" width="400">
 </p>
 
 * Prototype
@@ -88,7 +88,7 @@ Separates the construction of complex objects from their representation. It allo
 Allows you to create new objects by copying existing objects, without making your code dependent on their classes. It provides a way to create objects that are initialized with values from another object.
 
 <p align="center">
-  <img src="./assets/images/umls/prototype.png" width="400">
+  <img src="./assets/images/umls/prototype.jpg" width="400">
 </p>
 
 ### Structural Patterns 🧩
@@ -98,7 +98,7 @@ Allows you to create new objects by copying existing objects, without making you
 Allows two incompatible objects to work together by converting the interface of one object into an interface expected by the other object.
 
 <p align="center">
-  <img src="./assets/images/umls/adapter.png" width="400">
+  <img src="./assets/images/umls/adapter.jpg" width="400">
 </p>
 
 * Bridge
@@ -106,7 +106,7 @@ Allows two incompatible objects to work together by converting the interface of 
 Separates an object's abstraction from its implementation, allowing them to vary independently, favoring greater flexibility and extensibility.
 
 <p align="center">
-  <img src="./assets/images/umls/bridge.png" width="400">
+  <img src="./assets/images/umls/bridge.jpg" width="400">
 </p>
 
 * Composite
@@ -114,7 +114,7 @@ Separates an object's abstraction from its implementation, allowing them to vary
 Allows you to compose objects into a tree-like structure, where each node can be either a leaf node or a composite node. This pattern enables you to treat individual objects and compositions of objects uniformly, making it easier to work with complex structures.
 
 <p align="center">
-  <img src="./assets/images/umls/composite.png" width="400">
+  <img src="./assets/images/umls/composite.jpg" width="400">
 </p>
 
 * Decorator
@@ -122,5 +122,5 @@ Allows you to compose objects into a tree-like structure, where each node can be
 Allows you to dynamically add or remove additional responsibilities from an object without affecting its external interface. This pattern enables you to extend the behavior of an object without modifying its underlying structure.
 
 <p align="center">
-  <img src="./assets/images/umls/decorator.png" width="400">
+  <img src="./assets/images/umls/decorator.jpg" width="400">
 </p>
