@@ -108,3 +108,11 @@ Separates an object's abstraction from its implementation, allowing them to vary
 <p align="center">
   <img src="./assets/images/umls/bridge.png" width="400">
 </p>
+
+* Composite
+
+Allows you to compose objects into a tree-like structure, where each node can be either a leaf node or a composite node. This pattern enables you to treat individual objects and compositions of objects uniformly, making it easier to work with complex structures.
+
+<p align="center">
+  <img src="./assets/images/umls/composite.png" width="400">
+</p>
