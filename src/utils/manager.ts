@@ -10,6 +10,7 @@ import { singletonUseCase } from '../patterns/creational/singleton'
 import { adapterUseCase } from '../patterns/structural/adapter'
 import { bridgeUseCase } from '../patterns/structural/bridge'
 import { compositeUseCase } from '../patterns/structural/composite'
+import { decoratorUseCase } from '../patterns/structural/decorator'
 import type { PatternUseCase } from '../types'
 import type { Queue } from './queue'
 import type { Runner } from './runner'
@@ -25,7 +26,8 @@ export class DesignPatternsManager<
     ABSTRACT_FACTORY: Symbol('ABSTRACT_FACTORY'),
     ADAPTER: Symbol('ADAPTER'),
     BRIDGE: Symbol('BRIDGE'),
-    COMPOSITE: Symbol('COMPOSITE')
+    COMPOSITE: Symbol('COMPOSITE'),
+    DECORATOR: Symbol('DECORATOR')
   }
   private readonly patterns = new Map([
     [
@@ -56,6 +58,10 @@ export class DesignPatternsManager<
     [
       this.patterKeys.COMPOSITE,
       compositeUseCase(new ConsoleLogger('CompositePattern'))
+    ],
+    [
+      this.patterKeys.DECORATOR,
+      decoratorUseCase(new ConsoleLogger('DecoratorPattern'))
     ]
   ])
 

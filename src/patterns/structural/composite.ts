@@ -9,12 +9,12 @@ class Calendar {
     this.events.push(event)
   }
 
-  getEventsSummary(): string {
-    const margin = '\t'
+  getEvents(): string {
+    const separator = '\n\t'
     return this.events
-      .map(e => {
-        return `\n${margin}📌: ${e.getTitle()}\n${margin}📅: ${e.getFormattedDate()} ${e.getFormattedTime()}`
-      })
+      .map(e =>
+        `${separator}📌: ${e.getTitle()}${separator}📅: ${e.getFormattedDate()} ${e.getFormattedTime()}`.trimEnd()
+      )
       .join('\n')
   }
 }
@@ -37,5 +37,5 @@ export const compositeUseCase: PatternUseCase = (logger: Logger) => () => {
   )
   calendar.addEvent(new Birthday('John', new Date('1998-11-12')))
   calendar.addEvent(new Birthday('Jane', new Date('2001-08-05')))
-  logger.log(calendar.getEventsSummary())
+  logger.log(calendar.getEvents())
 }
