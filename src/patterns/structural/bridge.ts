@@ -1,7 +1,7 @@
 import type { PatternUseCase } from '../../types'
 import type { Logger } from '../creational/factory'
 
-class Occurrence {
+export class Occurrence {
   constructor(
     public title: string,
     public startDate: Date,
@@ -51,7 +51,7 @@ class Occurrence {
   }
 }
 
-class Birthday extends Occurrence {
+export class Birthday extends Occurrence {
   constructor(
     public name: string,
     public date: Date,
@@ -80,7 +80,7 @@ class Birthday extends Occurrence {
   }
 }
 
-class Meeting extends Occurrence {
+export class Meeting extends Occurrence {
   constructor(
     public subject: string,
     public startDate: Date,
@@ -92,6 +92,14 @@ class Meeting extends Occurrence {
   }
 
   getFormattedDate(): string {
+    return this.startDate.toLocaleDateString('en-US', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    })
+  }
+
+  getFormattedTime(): string {
     const from = this.startDate.toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit'
