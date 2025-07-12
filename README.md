@@ -116,3 +116,11 @@ Allows you to compose objects into a tree-like structure, where each node can be
 <p align="center">
   <img src="./assets/images/umls/composite.png" width="400">
 </p>
+
+* Decorator
+
+Allows you to dynamically add or remove additional responsibilities from an object without affecting its external interface. This pattern enables you to extend the behavior of an object without modifying its underlying structure.
+
+<p align="center">
+  <img src="./assets/images/umls/decorator.png" width="400">
+</p>
