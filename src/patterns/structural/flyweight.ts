@@ -13,8 +13,9 @@ class Product {
   }
 }
 
-class ShoppingCart {
+class Inventory {
   private products: { [key: string]: Product } = {}
+  constructor(public id: string) {}
 
   addProduct({
     name,
@@ -44,29 +45,31 @@ class ShoppingCart {
     )
   }
 
-  sell(): void {
-    this.products = {}
+  getId(): string {
+    return this.id
+  }
+}
+
+class InventoryManager {
+  private inventories: { [key: string]: Inventory } = {}
+
+  getInventory(id: string): Inventory {
+    if (!this.inventories[id]) this.inventories[id] = new Inventory(id)
+    return this.inventories[id]
   }
 }
 
 export const flyweightUseCase: PatternUseCase = (logger: Logger) => () => {
-  const cart = new ShoppingCart()
-    .addProduct({
-      name: 'Product A',
-      price: 10,
-      quantity: 2
-    })
-    .addProduct({
-      name: 'Product B',
-      price: 20,
-      quantity: 3
-    })
-    .addProduct({
-      name: 'Product C',
-      price: 30,
-      quantity: 1
-    })
-  logger.log(`Products in cart: ${cart.getProducts()}`)
-  logger.log(`Selling products. Total cost: $${cart.totalCost()}`)
-  cart.sell()
+  const dummyInventories = ['Inventory-1', 'Inventory-2']
+  const randomQuantity = () => Math.floor(Math.random() * 5) + 1
+
+  const manager = new InventoryManager()
+  for (const inventoryKey of dummyInventories) {
+    const inventory = manager.getInventory(inventoryKey)
+    inventory
+      .addProduct({ name: 'Product A', price: 10, quantity: randomQuantity() })
+      .addProduct({ name: 'Product B', price: 15, quantity: randomQuantity() })
+    logger.log(`${inventory.getId()} products: ${inventory.getProducts()}`)
+    logger.log(`${inventory.getId()} total cost: $${inventory.totalCost()}`)
+  }
 }
