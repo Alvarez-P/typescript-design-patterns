@@ -11,6 +11,7 @@ import { adapterUseCase } from '../patterns/structural/adapter'
 import { bridgeUseCase } from '../patterns/structural/bridge'
 import { compositeUseCase } from '../patterns/structural/composite'
 import { decoratorUseCase } from '../patterns/structural/decorator'
+import { facadeUseCase } from '../patterns/structural/facade'
 import type { PatternUseCase } from '../types'
 import type { Queue } from './queue'
 import type { Runner } from './runner'
@@ -27,7 +28,8 @@ export class DesignPatternsManager<
     ADAPTER: Symbol('ADAPTER'),
     BRIDGE: Symbol('BRIDGE'),
     COMPOSITE: Symbol('COMPOSITE'),
-    DECORATOR: Symbol('DECORATOR')
+    DECORATOR: Symbol('DECORATOR'),
+    FACADE: Symbol('FACADE')
   }
   private readonly patterns = new Map([
     [
@@ -62,7 +64,8 @@ export class DesignPatternsManager<
     [
       this.patterKeys.DECORATOR,
       decoratorUseCase(new ConsoleLogger('DecoratorPattern'))
-    ]
+    ],
+    [this.patterKeys.FACADE, facadeUseCase(new ConsoleLogger('FacadePattern'))]
   ])
 
   constructor(
