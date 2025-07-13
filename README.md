@@ -140,3 +140,11 @@ Allows multiple objects to share the same state or behavior, reducing the amount
 <p align="center">
   <img src="./assets/images/umls/flyweight.jpg" width="400">
 </p>
+
+* Proxy
+
+Acts as an intermediary between the client and the real object, adding additional functionality or controlling access to the original object.
+
+<p align="center">
+  <img src="./assets/images/umls/proxy.jpg" width="400">
+</p>
