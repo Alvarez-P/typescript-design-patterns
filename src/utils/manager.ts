@@ -12,6 +12,7 @@ import { bridgeUseCase } from '../patterns/structural/bridge'
 import { compositeUseCase } from '../patterns/structural/composite'
 import { decoratorUseCase } from '../patterns/structural/decorator'
 import { facadeUseCase } from '../patterns/structural/facade'
+import { flyweightUseCase } from '../patterns/structural/flyweight'
 import type { PatternUseCase } from '../types'
 import type { Queue } from './queue'
 import type { Runner } from './runner'
@@ -29,7 +30,8 @@ export class DesignPatternsManager<
     BRIDGE: Symbol('BRIDGE'),
     COMPOSITE: Symbol('COMPOSITE'),
     DECORATOR: Symbol('DECORATOR'),
-    FACADE: Symbol('FACADE')
+    FACADE: Symbol('FACADE'),
+    FLYWEIGHT: Symbol('FLYWEIGHT')
   }
   private readonly patterns = new Map([
     [
@@ -65,7 +67,11 @@ export class DesignPatternsManager<
       this.patterKeys.DECORATOR,
       decoratorUseCase(new ConsoleLogger('DecoratorPattern'))
     ],
-    [this.patterKeys.FACADE, facadeUseCase(new ConsoleLogger('FacadePattern'))]
+    [this.patterKeys.FACADE, facadeUseCase(new ConsoleLogger('FacadePattern'))],
+    [
+      this.patterKeys.FLYWEIGHT,
+      flyweightUseCase(new ConsoleLogger('FlyweightPattern'))
+    ]
   ])
 
   constructor(
