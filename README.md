@@ -124,3 +124,11 @@ Allows you to dynamically add or remove additional responsibilities from an obje
 <p align="center">
   <img src="./assets/images/umls/decorator.jpg" width="400">
 </p>
+
+* Facade
+
+Provides a simplified interface to a complex system of classes, libraries, or frameworks. It hides the complexities of the system and provides a single interface to access the system's functionality.
+
+<p align="center">
+  <img src="./assets/images/umls/facade.jpg" width="400">
+</p>
