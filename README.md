@@ -132,3 +132,11 @@ Provides a simplified interface to a complex system of classes, libraries, or fr
 <p align="center">
   <img src="./assets/images/umls/facade.jpg" width="400">
 </p>
+
+* Flyweight
+
+Allows multiple objects to share the same state or behavior, reducing the amount of memory used and improving performance.
+
+<p align="center">
+  <img src="./assets/images/umls/flyweight.jpg" width="400">
+</p>
