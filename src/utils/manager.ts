@@ -1,3 +1,4 @@
+import { chainOfResponsibilityUseCase } from '../patterns/behavioral/chainOfResponsibility'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -33,7 +34,8 @@ export class DesignPatternsManager<
     DECORATOR: Symbol('DECORATOR'),
     FACADE: Symbol('FACADE'),
     FLYWEIGHT: Symbol('FLYWEIGHT'),
-    PROXY: Symbol('PROXY')
+    PROXY: Symbol('PROXY'),
+    CHAIN_OF_RESPONSIBILITY: Symbol('CHAIN_OF_RESPONSIBILITY')
   }
   private readonly patterns = new Map([
     [
@@ -74,7 +76,13 @@ export class DesignPatternsManager<
       this.patterKeys.FLYWEIGHT,
       flyweightUseCase(new ConsoleLogger('FlyweightPattern'))
     ],
-    [this.patterKeys.PROXY, proxyUseCase(new ConsoleLogger('ProxyPattern'))]
+    [this.patterKeys.PROXY, proxyUseCase(new ConsoleLogger('ProxyPattern'))],
+    [
+      this.patterKeys.CHAIN_OF_RESPONSIBILITY,
+      chainOfResponsibilityUseCase(
+        new ConsoleLogger('ChainOfResponsibilityPattern')
+      )
+    ]
   ])
 
   constructor(
