@@ -148,3 +148,13 @@ Acts as an intermediary between the client and the real object, adding additiona
 <p align="center">
   <img src="./assets/images/umls/proxy.jpg" width="400">
 </p>
+
+### Behavioral Patterns 🔁
+
+* Chain of responsibility
+
+Allows multiple objects to handle a request in a sequential manner. Each object in the chain has the opportunity to process the request or pass it to the next object in the chain.
+
+<p align="center">
+  <img src="./assets/images/umls/chainOfResponsibility.jpg" width="400">
+</p>
