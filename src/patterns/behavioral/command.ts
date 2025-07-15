@@ -6,7 +6,6 @@ import type { Logger } from '../creational/factory'
 interface Command {
   execute(): void | Promise<void>
   undo(): void | Promise<void>
-  redo(): void | Promise<void>
 }
 
 class CreateFileCommand implements Command {
@@ -47,10 +46,6 @@ class ReadFileCommand implements Command {
   }
 
   undo() {}
-
-  redo() {
-    return this.execute()
-  }
 }
 
 class CommandManager {
@@ -64,8 +59,7 @@ class CommandManager {
       if (r instanceof Promise) await r
       this.executed.push(command)
     } catch (error) {
-      this.logger.error(`Error executing command: ${error}. Retrying...`)
-      await command.redo()
+      this.logger.error(`Error executing command: ${error}.`)
     }
   }
 

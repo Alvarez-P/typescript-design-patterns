@@ -158,3 +158,11 @@ Allows multiple objects to handle a request in a sequential manner. Each object 
 <p align="center">
   <img src="./assets/images/umls/chainOfResponsibility.jpg" width="400">
 </p>
+
+* Command
+
+Encapsulates a request as an object, allowing the request to be parameterized, queued, logged and reverted. The key idea behind this pattern is to provide the means to decouple client from receiver.
+
+<p align="center">
+  <img src="./assets/images/umls/command.jpeg" width="400">
+</p>
