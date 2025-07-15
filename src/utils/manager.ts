@@ -1,6 +1,7 @@
 import { chainOfResponsibilityUseCase } from '../patterns/behavioral/chainOfResponsibility'
 import { commandUseCase } from '../patterns/behavioral/command'
 import { iteratorUseCase } from '../patterns/behavioral/iterator'
+import { mediatorUseCase } from '../patterns/behavioral/mediator'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -41,7 +42,8 @@ export class DesignPatternsManager<
     COMMAND: Symbol('COMMAND'),
     QUEUE: Symbol('QUEUE'),
     RUNNER: Symbol('RUNNER'),
-    ITERATOR: Symbol('ITERATOR')
+    ITERATOR: Symbol('ITERATOR'),
+    MEDIATOR: Symbol('MEDIATOR')
   }
   private readonly patterns = new Map([
     [
@@ -96,6 +98,10 @@ export class DesignPatternsManager<
     [
       this.patterKeys.ITERATOR,
       iteratorUseCase(new ConsoleLogger('IteratorPattern'))
+    ],
+    [
+      this.patterKeys.MEDIATOR,
+      mediatorUseCase(new ConsoleLogger('MediatorPattern'))
     ]
   ])
 
