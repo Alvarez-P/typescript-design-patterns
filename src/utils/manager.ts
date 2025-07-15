@@ -1,4 +1,5 @@
 import { chainOfResponsibilityUseCase } from '../patterns/behavioral/chainOfResponsibility'
+import { commandUseCase } from '../patterns/behavioral/command'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -35,7 +36,8 @@ export class DesignPatternsManager<
     FACADE: Symbol('FACADE'),
     FLYWEIGHT: Symbol('FLYWEIGHT'),
     PROXY: Symbol('PROXY'),
-    CHAIN_OF_RESPONSIBILITY: Symbol('CHAIN_OF_RESPONSIBILITY')
+    CHAIN_OF_RESPONSIBILITY: Symbol('CHAIN_OF_RESPONSIBILITY'),
+    COMMAND: Symbol('COMMAND')
   }
   private readonly patterns = new Map([
     [
@@ -82,6 +84,10 @@ export class DesignPatternsManager<
       chainOfResponsibilityUseCase(
         new ConsoleLogger('ChainOfResponsibilityPattern')
       )
+    ],
+    [
+      this.patterKeys.COMMAND,
+      commandUseCase(new ConsoleLogger('CommandPattern'))
     ]
   ])
 
