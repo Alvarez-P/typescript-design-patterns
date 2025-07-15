@@ -1,5 +1,6 @@
 import { chainOfResponsibilityUseCase } from '../patterns/behavioral/chainOfResponsibility'
 import { commandUseCase } from '../patterns/behavioral/command'
+import { iteratorUseCase } from '../patterns/behavioral/iterator'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -37,7 +38,10 @@ export class DesignPatternsManager<
     FLYWEIGHT: Symbol('FLYWEIGHT'),
     PROXY: Symbol('PROXY'),
     CHAIN_OF_RESPONSIBILITY: Symbol('CHAIN_OF_RESPONSIBILITY'),
-    COMMAND: Symbol('COMMAND')
+    COMMAND: Symbol('COMMAND'),
+    QUEUE: Symbol('QUEUE'),
+    RUNNER: Symbol('RUNNER'),
+    ITERATOR: Symbol('ITERATOR')
   }
   private readonly patterns = new Map([
     [
@@ -88,6 +92,10 @@ export class DesignPatternsManager<
     [
       this.patterKeys.COMMAND,
       commandUseCase(new ConsoleLogger('CommandPattern'))
+    ],
+    [
+      this.patterKeys.ITERATOR,
+      iteratorUseCase(new ConsoleLogger('IteratorPattern'))
     ]
   ])
 
