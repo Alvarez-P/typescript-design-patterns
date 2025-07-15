@@ -166,3 +166,12 @@ Encapsulates a request as an object, allowing the request to be parameterized, q
 <p align="center">
   <img src="./assets/images/umls/command.jpeg" width="400">
 </p>
+
+* Iterator
+
+Allows you to traverse a collection of objects without exposing the underlying implementation of the collection. It provides a way to access the elements of a collection in a sequential manner, without having to know the details of the collection's internal structure.
+
+<p align="center">
+  <img src="./assets/images/umls/iterator.jpg" width="400">
+</p>
+
