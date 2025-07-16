@@ -32,7 +32,7 @@ class IntlDateFormatterAdapter implements DateFormatter {
   constructor(public separator: string = '-') {}
 
   yyyymmdd(date: Date): string {
-    return new Intl.DateTimeFormat('en-US', {
+    return new Intl.DateTimeFormat('es', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit'
@@ -44,7 +44,7 @@ class IntlDateFormatterAdapter implements DateFormatter {
   }
 
   ddmmyyyy(date: Date): string {
-    return new Intl.DateTimeFormat('en-US', {
+    return new Intl.DateTimeFormat('es', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit'

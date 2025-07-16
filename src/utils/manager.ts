@@ -2,6 +2,7 @@ import { chainOfResponsibilityUseCase } from '../patterns/behavioral/chainOfResp
 import { commandUseCase } from '../patterns/behavioral/command'
 import { iteratorUseCase } from '../patterns/behavioral/iterator'
 import { mediatorUseCase } from '../patterns/behavioral/mediator'
+import { mementoUseCase } from '../patterns/behavioral/memento'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -43,7 +44,8 @@ export class DesignPatternsManager<
     QUEUE: Symbol('QUEUE'),
     RUNNER: Symbol('RUNNER'),
     ITERATOR: Symbol('ITERATOR'),
-    MEDIATOR: Symbol('MEDIATOR')
+    MEDIATOR: Symbol('MEDIATOR'),
+    MEMENTO: Symbol('MEMENTO')
   }
   private readonly patterns = new Map([
     [
@@ -102,6 +104,10 @@ export class DesignPatternsManager<
     [
       this.patterKeys.MEDIATOR,
       mediatorUseCase(new ConsoleLogger('MediatorPattern'))
+    ],
+    [
+      this.patterKeys.MEMENTO,
+      mementoUseCase(new ConsoleLogger('MementoPattern'))
     ]
   ])
 
