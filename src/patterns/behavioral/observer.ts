@@ -1,11 +1,24 @@
 import type { PatternUseCase } from '../../types'
 import type { Logger } from '../creational/factory'
 
+interface Subscriber {
+  name: string
+  notify: (issue: Issue) => string
+}
+
 class Issue {
   constructor(public title: string) {}
 }
 
-class Developer {
+class Developer implements Subscriber {
+  constructor(public name: string) {}
+
+  notify(issue: Issue) {
+    return `${this.name} has been notified of a new issue: ${issue.title}`
+  }
+}
+
+class ProjectManager implements Subscriber {
   constructor(public name: string) {}
 
   notify(issue: Issue) {
@@ -14,9 +27,9 @@ class Developer {
 }
 
 class Board {
-  private subscribers: Developer[] = []
+  private subscribers: Subscriber[] = []
 
-  subscribe(subscriber: Developer) {
+  subscribe(subscriber: Subscriber) {
     this.subscribers.push(subscriber)
     return this
   }
@@ -31,7 +44,7 @@ class Board {
 export const observerUseCase: PatternUseCase = (logger: Logger) => () => {
   const johnDoe = new Developer('John Doe')
   const anaSmith = new Developer('Ana Smith')
-  const josephMiller = new Developer('Joseph Miller')
+  const josephMiller = new ProjectManager('Joseph Miller')
 
   const board = new Board()
   board.subscribe(johnDoe).subscribe(anaSmith).subscribe(josephMiller)
