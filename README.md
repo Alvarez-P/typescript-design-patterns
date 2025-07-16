@@ -182,3 +182,11 @@ Defines an object that encapsulates how a set of objects interact with each othe
 <p align="center">
   <img src="./assets/images/umls/mediator.jpg" width="400">
 </p>
+
+* Memento
+
+Allows an object to capture its internal state and externalize it so that the object can be restored to its previous state later.
+
+<p align="center">
+  <img src="./assets/images/umls/memento.png" width="400">
+</p>
