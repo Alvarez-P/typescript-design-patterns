@@ -190,3 +190,11 @@ Allows an object to capture its internal state and externalize it so that the ob
 <p align="center">
   <img src="./assets/images/umls/memento.png" width="400">
 </p>
+
+* Observer
+
+Provides a way for objects to be notified of changes to other objects without having a tight coupling between them.
+
+<p align="center">
+  <img src="./assets/images/umls/observer.png" width="400">
+</p>
