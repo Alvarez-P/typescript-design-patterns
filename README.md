@@ -175,3 +175,10 @@ Allows you to traverse a collection of objects without exposing the underlying i
   <img src="./assets/images/umls/iterator.jpg" width="400">
 </p>
 
+* Mediator
+
+Defines an object that encapsulates how a set of objects interact with each other. It acts as an intermediary between the objects, allowing them to communicate with each other without having a direct reference to one another.
+
+<p align="center">
+  <img src="./assets/images/umls/mediator.jpg" width="400">
+</p>
