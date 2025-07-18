@@ -4,6 +4,7 @@ import { iteratorUseCase } from '../patterns/behavioral/iterator'
 import { mediatorUseCase } from '../patterns/behavioral/mediator'
 import { mementoUseCase } from '../patterns/behavioral/memento'
 import { observerUseCase } from '../patterns/behavioral/observer'
+import { stateUseCase } from '../patterns/behavioral/state'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -47,7 +48,8 @@ export class DesignPatternsManager<
     ITERATOR: Symbol('ITERATOR'),
     MEDIATOR: Symbol('MEDIATOR'),
     MEMENTO: Symbol('MEMENTO'),
-    OBSERVER: Symbol('OBSERVER')
+    OBSERVER: Symbol('OBSERVER'),
+    STATE: Symbol('STATE')
   }
   private readonly patterns = new Map([
     [
@@ -114,7 +116,8 @@ export class DesignPatternsManager<
     [
       this.patterKeys.OBSERVER,
       observerUseCase(new ConsoleLogger('ObserverPattern'))
-    ]
+    ],
+    [this.patterKeys.STATE, stateUseCase(new ConsoleLogger('StatePattern'))]
   ])
 
   constructor(
