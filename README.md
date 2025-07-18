@@ -198,3 +198,11 @@ Provides a way for objects to be notified of changes to other objects without ha
 <p align="center">
   <img src="./assets/images/umls/observer.png" width="400">
 </p>
+
+* State
+
+Allows an object to change its behavior when its internal state changes. It provides a way for objects to be notified of changes to other objects without having a tight coupling between them.
+
+<p align="center">
+  <img src="./assets/images/umls/state.jpg" width="400">
+</p>
