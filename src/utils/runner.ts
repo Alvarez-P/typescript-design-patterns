@@ -13,7 +13,7 @@ export class Runner {
       this.logger.log(`Task executed.`)
     } catch (error) {
       this.logger.error(`Error executing task: ${error}`)
-      process.exit(1)
+      process.exit()
     }
   }
 }
