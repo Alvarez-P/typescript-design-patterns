@@ -30,7 +30,7 @@ import type { Runner } from './runner'
 export class DesignPatternsManager<
   P extends ReturnType<PatternUseCase> = ReturnType<PatternUseCase>
 > {
-  private readonly patterKeys: Record<string, symbol> = {
+  private readonly patternKeys: Record<string, symbol> = {
     SINGLETON: Symbol('SINGLETON'),
     BUILDER: Symbol('BUILDER'),
     PROTOTYPE: Symbol('PROTOTYPE'),
@@ -57,77 +57,83 @@ export class DesignPatternsManager<
   }
   private readonly patterns = new Map([
     [
-      this.patterKeys.SINGLETON,
+      this.patternKeys.SINGLETON,
       singletonUseCase(new ConsoleLogger('SingletonPattern'))
     ],
     [
-      this.patterKeys.BUILDER,
+      this.patternKeys.BUILDER,
       builderUseCase(new ConsoleLogger('BuilderPattern'))
     ],
     [
-      this.patterKeys.PROTOTYPE,
+      this.patternKeys.PROTOTYPE,
       prototypeUseCase(new ConsoleLogger('PrototypePattern'))
     ],
     [
-      this.patterKeys.FACTORY,
+      this.patternKeys.FACTORY,
       factoryUseCase(new ConsoleLogger('FactoryPattern'))
     ],
     [
-      this.patterKeys.ABSTRACT_FACTORY,
+      this.patternKeys.ABSTRACT_FACTORY,
       abstractFactoryUseCase(new ConsoleLogger('AbstractFactoryPattern'))
     ],
     [
-      this.patterKeys.ADAPTER,
+      this.patternKeys.ADAPTER,
       adapterUseCase(new ConsoleLogger('AdapterPattern'))
     ],
-    [this.patterKeys.BRIDGE, bridgeUseCase(new ConsoleLogger('BridgePattern'))],
     [
-      this.patterKeys.COMPOSITE,
+      this.patternKeys.BRIDGE,
+      bridgeUseCase(new ConsoleLogger('BridgePattern'))
+    ],
+    [
+      this.patternKeys.COMPOSITE,
       compositeUseCase(new ConsoleLogger('CompositePattern'))
     ],
     [
-      this.patterKeys.DECORATOR,
+      this.patternKeys.DECORATOR,
       decoratorUseCase(new ConsoleLogger('DecoratorPattern'))
     ],
-    [this.patterKeys.FACADE, facadeUseCase(new ConsoleLogger('FacadePattern'))],
     [
-      this.patterKeys.FLYWEIGHT,
+      this.patternKeys.FACADE,
+      facadeUseCase(new ConsoleLogger('FacadePattern'))
+    ],
+    [
+      this.patternKeys.FLYWEIGHT,
       flyweightUseCase(new ConsoleLogger('FlyweightPattern'))
     ],
-    [this.patterKeys.PROXY, proxyUseCase(new ConsoleLogger('ProxyPattern'))],
+    [this.patternKeys.PROXY, proxyUseCase(new ConsoleLogger('ProxyPattern'))],
     [
-      this.patterKeys.CHAIN_OF_RESPONSIBILITY,
+      this.patternKeys.CHAIN_OF_RESPONSIBILITY,
       chainOfResponsibilityUseCase(
         new ConsoleLogger('ChainOfResponsibilityPattern')
       )
     ],
     [
-      this.patterKeys.COMMAND,
+      this.patternKeys.COMMAND,
       commandUseCase(new ConsoleLogger('CommandPattern'))
     ],
     [
-      this.patterKeys.ITERATOR,
+      this.patternKeys.ITERATOR,
       iteratorUseCase(new ConsoleLogger('IteratorPattern'))
     ],
     [
-      this.patterKeys.MEDIATOR,
+      this.patternKeys.MEDIATOR,
       mediatorUseCase(new ConsoleLogger('MediatorPattern'))
     ],
     [
-      this.patterKeys.MEMENTO,
+      this.patternKeys.MEMENTO,
       mementoUseCase(new ConsoleLogger('MementoPattern'))
     ],
     [
-      this.patterKeys.OBSERVER,
+      this.patternKeys.OBSERVER,
       observerUseCase(new ConsoleLogger('ObserverPattern'))
     ],
-    [this.patterKeys.STATE, stateUseCase(new ConsoleLogger('StatePattern'))],
+    [this.patternKeys.STATE, stateUseCase(new ConsoleLogger('StatePattern'))],
     [
-      this.patterKeys.STRATEGY,
+      this.patternKeys.STRATEGY,
       strategyUseCase(new ConsoleLogger('StrategyPattern'))
     ],
     [
-      this.patterKeys.TEMPLATE,
+      this.patternKeys.TEMPLATE,
       templateUseCase(new ConsoleLogger('TemplatePattern'))
     ]
   ])
@@ -154,7 +160,7 @@ export class DesignPatternsManager<
   }
 
   public getPatterns() {
-    return this.patterKeys
+    return this.patternKeys
   }
 
   private setup() {
