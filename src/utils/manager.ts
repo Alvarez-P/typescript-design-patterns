@@ -5,6 +5,7 @@ import { mediatorUseCase } from '../patterns/behavioral/mediator'
 import { mementoUseCase } from '../patterns/behavioral/memento'
 import { observerUseCase } from '../patterns/behavioral/observer'
 import { stateUseCase } from '../patterns/behavioral/state'
+import { strategyUseCase } from '../patterns/behavioral/strategy'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -49,7 +50,8 @@ export class DesignPatternsManager<
     MEDIATOR: Symbol('MEDIATOR'),
     MEMENTO: Symbol('MEMENTO'),
     OBSERVER: Symbol('OBSERVER'),
-    STATE: Symbol('STATE')
+    STATE: Symbol('STATE'),
+    STRATEGY: Symbol('STRATEGY')
   }
   private readonly patterns = new Map([
     [
@@ -117,7 +119,11 @@ export class DesignPatternsManager<
       this.patterKeys.OBSERVER,
       observerUseCase(new ConsoleLogger('ObserverPattern'))
     ],
-    [this.patterKeys.STATE, stateUseCase(new ConsoleLogger('StatePattern'))]
+    [this.patterKeys.STATE, stateUseCase(new ConsoleLogger('StatePattern'))],
+    [
+      this.patterKeys.STRATEGY,
+      strategyUseCase(new ConsoleLogger('StrategyPattern'))
+    ]
   ])
 
   constructor(
