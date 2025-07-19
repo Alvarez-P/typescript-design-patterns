@@ -7,56 +7,38 @@ type Sorteable = Record<
 > &
   Record<string, unknown>
 
-type SortByString<S extends Sorteable> = keyof {
-  [K in keyof S]: S[K] extends string ? K : never
-}
-
-type SortByNumber<S extends Sorteable> = keyof {
-  [K in keyof S]: S[K] extends number | boolean | Date ? K : never
-}
-
 interface SortStrategy<S extends Sorteable> {
-  sortBy: keyof S
-  direction: 'asc' | 'desc'
-  sort(items: S[]): S[]
+  sort(items: S[], sortBy: keyof S, direction: 'asc' | 'desc'): S[]
 }
 
 class Sorter<S extends Sorteable> {
   constructor(private items: S[]) {}
 
-  sort(sortStrategy: SortStrategy<S>) {
-    return sortStrategy.sort(this.items)
+  sort(sortBy: keyof S, direction: 'asc' | 'desc', strategy?: SortStrategy<S>) {
+    if (strategy) return strategy.sort(this.items, sortBy, direction)
+    if (typeof this.items[0][sortBy] === 'string')
+      return new StringSorterStrategy<S>().sort(this.items, sortBy, direction)
+    return new NumberSorterStrategy<S>().sort(this.items, sortBy, direction)
   }
 }
 
 class StringSorterStrategy<S extends Sorteable> implements SortStrategy<S> {
-  constructor(
-    public sortBy: SortByString<S>,
-    public direction: 'asc' | 'desc'
-  ) {}
-
-  sort(items: S[]) {
+  sort(items: S[], sortBy: keyof S, direction: 'asc' | 'desc') {
     return items.sort((a, b) => {
-      const aValue = a[this.sortBy] as string
-      const bValue = b[this.sortBy] as string
-      if (this.direction === 'asc') return aValue.localeCompare(bValue)
+      const aValue = a[sortBy] as string
+      const bValue = b[sortBy] as string
+      if (direction === 'asc') return aValue.localeCompare(bValue)
       else return bValue.localeCompare(aValue)
     })
   }
 }
 
 class NumberSorterStrategy<S extends Sorteable> implements SortStrategy<S> {
-  constructor(
-    public sortBy: SortByNumber<S>,
-    public direction: 'asc' | 'desc'
-  ) {}
-
-  sort(items: S[]) {
+  sort(items: S[], sortBy: keyof S, direction: 'asc' | 'desc') {
     return items.sort((a, b) => {
-      const aValue = a[this.sortBy] as number | boolean | Date
-      const bValue = b[this.sortBy] as number | boolean | Date
-      const order =
-        this.direction === 'asc' ? [aValue, bValue] : [bValue, aValue]
+      const aValue = a[sortBy] as number | boolean | Date
+      const bValue = b[sortBy] as number | boolean | Date
+      const order = direction === 'asc' ? [aValue, bValue] : [bValue, aValue]
       if (order[0] > order[1]) return 1
       else if (order[0] < order[1]) return -1
       else return 0
@@ -71,14 +53,12 @@ export const strategyUseCase: PatternUseCase = (logger: Logger) => () => {
     { name: 'Bob', height: 1.83, birthday: new Date('1985-03-03') }
   ])
 
-  const sortedByName = sorter
-    .sort(new StringSorterStrategy('name', 'asc'))
-    .map(({ name }) => ({ name }))
+  const sortedByName = sorter.sort('name', 'asc').map(({ name }) => ({ name }))
   const sortedByHeight = sorter
-    .sort(new NumberSorterStrategy('height', 'desc'))
+    .sort('height', 'desc')
     .map(({ name }) => ({ name }))
   const sortedByBirthday = sorter
-    .sort(new NumberSorterStrategy('birthday', 'asc'))
+    .sort('birthday', 'asc')
     .map(({ name }) => ({ name }))
 
   logger.log(`Sorting by name (asc): ${JSON.stringify(sortedByName)}`)
