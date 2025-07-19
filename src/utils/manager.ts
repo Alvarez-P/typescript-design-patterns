@@ -6,6 +6,7 @@ import { mementoUseCase } from '../patterns/behavioral/memento'
 import { observerUseCase } from '../patterns/behavioral/observer'
 import { stateUseCase } from '../patterns/behavioral/state'
 import { strategyUseCase } from '../patterns/behavioral/strategy'
+import { templateUseCase } from '../patterns/behavioral/template'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -51,7 +52,8 @@ export class DesignPatternsManager<
     MEMENTO: Symbol('MEMENTO'),
     OBSERVER: Symbol('OBSERVER'),
     STATE: Symbol('STATE'),
-    STRATEGY: Symbol('STRATEGY')
+    STRATEGY: Symbol('STRATEGY'),
+    TEMPLATE: Symbol('TEMPLATE')
   }
   private readonly patterns = new Map([
     [
@@ -123,6 +125,10 @@ export class DesignPatternsManager<
     [
       this.patterKeys.STRATEGY,
       strategyUseCase(new ConsoleLogger('StrategyPattern'))
+    ],
+    [
+      this.patterKeys.TEMPLATE,
+      templateUseCase(new ConsoleLogger('TemplatePattern'))
     ]
   ])
 
