@@ -12,13 +12,10 @@ interface SortStrategy<S extends Sorteable> {
 }
 
 class Sorter<S extends Sorteable> {
-  constructor(private items: S[]) {}
+  constructor(public items: S[]) {}
 
-  sort(sortBy: keyof S, direction: 'asc' | 'desc', strategy?: SortStrategy<S>) {
-    if (strategy) return strategy.sort(this.items, sortBy, direction)
-    if (typeof this.items[0][sortBy] === 'string')
-      return new StringSorterStrategy<S>().sort(this.items, sortBy, direction)
-    return new NumberSorterStrategy<S>().sort(this.items, sortBy, direction)
+  sort(sortBy: keyof S, direction: 'asc' | 'desc', strategy: SortStrategy<S>) {
+    return strategy.sort(this.items, sortBy, direction)
   }
 }
 
@@ -53,13 +50,15 @@ export const strategyUseCase: PatternUseCase = (logger: Logger) => () => {
     { name: 'Bob', height: 1.83, birthday: new Date('1985-03-03') }
   ])
 
-  const sortedByName = sorter.sort('name', 'asc').map(({ name }) => ({ name }))
+  const sortedByName = sorter
+    .sort('name', 'asc', new StringSorterStrategy())
+    .map(({ name }) => ({ name }))
   const sortedByHeight = sorter
-    .sort('height', 'desc')
-    .map(({ name }) => ({ name }))
+    .sort('height', 'desc', new NumberSorterStrategy())
+    .map(({ height }) => ({ height }))
   const sortedByBirthday = sorter
-    .sort('birthday', 'asc')
-    .map(({ name }) => ({ name }))
+    .sort('birthday', 'asc', new NumberSorterStrategy())
+    .map(({ birthday }) => ({ birthday: birthday.toLocaleDateString() }))
 
   logger.log(`Sorting by name (asc): ${JSON.stringify(sortedByName)}`)
   logger.log(`Sorting by height (desc): ${JSON.stringify(sortedByHeight)}`)
