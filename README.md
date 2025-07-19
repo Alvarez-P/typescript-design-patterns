@@ -209,8 +209,16 @@ Allows an object to change its behavior when its internal state changes. It prov
 
 * Strategy
 
- Allows you to define a family of algorithms, encapsulate each one as a separate class, and make them interchangeable at runtime.
+Allows you to define a family of algorithms, encapsulate each one as a separate class, and make them interchangeable at runtime.
 
 <p align="center">
   <img src="./assets/images/umls/strategy.png" width="400">
+</p>
+
+* Template
+
+Defines a skeleton of an algorithm in a method, deferring some steps to subclasses. It lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure.
+
+<p align="center">
+  <img src="./assets/images/umls/template.png" width="400">
 </p>
