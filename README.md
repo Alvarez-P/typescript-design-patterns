@@ -206,3 +206,11 @@ Allows an object to change its behavior when its internal state changes. It prov
 <p align="center">
   <img src="./assets/images/umls/state.jpg" width="400">
 </p>
+
+* Strategy
+
+ Allows you to define a family of algorithms, encapsulate each one as a separate class, and make them interchangeable at runtime.
+
+<p align="center">
+  <img src="./assets/images/umls/strategy.png" width="400">
+</p>
