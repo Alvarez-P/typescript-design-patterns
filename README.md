@@ -222,3 +222,11 @@ Defines a skeleton of an algorithm in a method, deferring some steps to subclass
 <p align="center">
   <img src="./assets/images/umls/template.png" width="400">
 </p>
+
+* [Visitor](./src/patterns/behavioral/visitor.ts)
+
+Allows you to add new operations to a class hierarchy without modifying the existing classes.
+
+<p align="center">
+  <img src="./assets/images/umls/visitor.jpg" width="400">
+</p>
