@@ -7,6 +7,7 @@ import { observerUseCase } from '../patterns/behavioral/observer'
 import { stateUseCase } from '../patterns/behavioral/state'
 import { strategyUseCase } from '../patterns/behavioral/strategy'
 import { templateUseCase } from '../patterns/behavioral/template'
+import { visitorUseCase } from '../patterns/behavioral/visitor'
 import { abstractFactoryUseCase } from '../patterns/creational/abstract-factory'
 import { builderUseCase } from '../patterns/creational/builder'
 import {
@@ -53,7 +54,8 @@ export class DesignPatternsManager<
     OBSERVER: Symbol('OBSERVER'),
     STATE: Symbol('STATE'),
     STRATEGY: Symbol('STRATEGY'),
-    TEMPLATE: Symbol('TEMPLATE')
+    TEMPLATE: Symbol('TEMPLATE'),
+    VISITOR: Symbol('VISITOR')
   }
   private readonly patterns = new Map([
     [
@@ -135,6 +137,10 @@ export class DesignPatternsManager<
     [
       this.patternKeys.TEMPLATE,
       templateUseCase(new ConsoleLogger('TemplatePattern'))
+    ],
+    [
+      this.patternKeys.VISITOR,
+      visitorUseCase(new ConsoleLogger('VisitorPattern'))
     ]
   ])
 
